@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: Code Snippets
 category: Design
 date: 2017-12-25 13:45:00
