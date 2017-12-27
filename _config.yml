@@ -13,3 +13,4 @@ markdown: kramdown
 include: ['_pages']
 kramdown:
   input: GFM
+encoding: UTF-8
