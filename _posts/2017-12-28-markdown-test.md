@@ -1,3 +1,11 @@
+---
+title: Markdown cheatsheet
+layout: post
+excerpt_separator: <!--more-->
+---
+
+Some simple markdown cheatsheet from github.
+<!--more-->
 Copied from [jonschlinkert/markdown.md](https://gist.github.com/jonschlinkert/5854601).
 
 # Typography 
