@@ -2,7 +2,7 @@ title: Reactive World
 theme: jekyll-theme-midnight
 description: > # this means to ignore newlines until "baseurl:"
  Site about reactive programming world. It contains some basics about Reactive Programming and Functional Reactive programming, also information and how to use RP implementation ReactiveX. 
-baseurl: ""
+baseurl: "www.reactiveworld.net"
 url: "http://reactiveworld.net"
 twitter_username: rosprog
 github_username:  novros
