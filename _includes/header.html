@@ -6,7 +6,7 @@
 				{% if page.title %}
 					{% unless page.title == 'Home' %}
 						<li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
-					{% enduless %}
+					{% endunless %}
 				{% endif %}
 			{% endfor %}
 		</ul>
