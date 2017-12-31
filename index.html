@@ -3,12 +3,9 @@ layout: default
 title: Home
 ---
 
-<h2 class="text-center">Welcome to Reactive World </h2>
+<h2 class="text-center">Welcome to Reactive World</h2>
 <hr>
 
 {% for post in site.posts %}
-		<time>{{ post.date | date: "%b %-d, %Y" }}</time>
-		<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-		<p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
-		<hr>
+	{% include post_frame.html %}
 {% endfor %}
