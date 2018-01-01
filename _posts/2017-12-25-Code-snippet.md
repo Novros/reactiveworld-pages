@@ -2,6 +2,7 @@
 layout: post
 title: Code Snippets
 date: 2017-12-25 13:45:00
+comments: true
 
 excerpt: Quick overview on how to post code snippets using Liquid tags and how to escape or not escape markdown and HTML in your blog entries. 
 
