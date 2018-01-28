@@ -11,7 +11,7 @@ Apps nowadays needs to be very responsive and reacts almost on everything. Also 
 ## What is reactive programming
 If you are looking for an exact definition of what reactive programming is, it is hard to find on the internet. You can begin with [The Reactive Manifesto](https://www.reactivemanifesto.org/), but understanding it is not a simple task. I must agree with many developers, which have written about RP, that definition on Wikipedia is vague, Microsoft's definition is based on their technology and Reactive Manifesto is something for business. The very simple definition of reactive programming would be:
 
-***"Reactive programming is using asynchronous streams, where a stream can be any data structure or object."***
+***"Reactive programming is using asynchronous streams, where a stream can emit any data structure or object."***
 
 ### Stream is observable
 A stream is a sequence of events ordered in time. **Stream can emit three types of objects. A value, an error and completed.** The Value is emitted after the normal run of code block. The error is emitted when some exception occurs during is emitting value or running code block. And completed is "signal", which is emitted at the end of the stream.
