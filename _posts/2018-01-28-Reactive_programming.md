@@ -6,7 +6,6 @@ comments: true
 excerpt: Apps nowadays needs to be very responsive and reacts almost on everything. Also event based programming was long time with us and we need some higher and better abstraction for this. Reactive programming is answer for this.
 ---
 
-# Reactive Programming
 Apps nowadays needs to be very responsive and reacts almost on everything. Also event based programming was long time with us and we need some higher and better abstraction for this. Reactive programming is answer for this.
 
 ## What is reactive programming
