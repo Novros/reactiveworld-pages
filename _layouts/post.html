@@ -3,8 +3,11 @@ layout: default
 comments: true
 ---
 
+<div class="post-title">
 <h2>{{ page.title }}</h2>
 <time>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</time>
+{% include read_time.html %}
+</div>
 {{ content }}
 
 {% if page.comments %}
