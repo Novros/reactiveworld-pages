@@ -12,4 +12,6 @@ Site about Reactive Programming world. It contains some basics about Reactive Pr
 * How to test Reactive programming code (will be added in future)
 * Java 8 streams (will be added in future)
 
+Website is written in [Jekyll](https://jekyllrb.com/), project maintained by [{{ site.github.owner_name }}]({{ site.github.owner_url }}) and hosted on GitHub Pages. Theme is created by [mattgraham](https://twitter.com/michigangraham)
+
 Last update: 29-01-2018
