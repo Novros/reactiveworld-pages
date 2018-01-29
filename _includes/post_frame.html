@@ -1,5 +1,5 @@
 <div class="post-frame">
-	<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>  <time class="post-meta">{{ page.date | date: "%b %-d, %Y" }}</time>
+	<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>  <time class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</time>
 	<p style="text-align: justify">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
 	<hr>
 <div>
