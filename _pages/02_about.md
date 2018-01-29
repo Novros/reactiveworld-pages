@@ -4,10 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This website is about Reactive Programming World. It contains (This list is not complete and website is under constraction):
+Site about Reactive Programming world. It contains some basics about Reactive Programming and Functional Reactive programming. Also information how to use reactive extension named ReactiveX. Information which includes website is defined by list below:
 
 * Basic information about Reactive Programming
-* Functional Reactive Programming
-* How to use implementation of RP - ReactiveX
+* Functional Reactive Programming (will be added in future)
+* How to use implementation of RP - ReactiveX (will be added in future)
+* How to test Reactive programming code (will be added in future)
+* Java 8 streams (will be added in future)
 
-Last update: 27-12-2017
+Last update: 29-01-2018
