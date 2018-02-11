@@ -10,7 +10,7 @@ In this post, we will look at more in depth of Reactive Programming. What is the
 ## Evaluation model
 Evaluation model is a data flow graph. In simple meaning, **It defines how changes will be propagated throughout the whole dependency graph of values and calculations.** Nodes of this graph represent computations and edges represents a dependency relationship. This graph is used by runtime part of language to find which computations must recomputed again, when the input of graph change. So, as we can see, evaluation model is the most necessary object of reactive programming.
 
-![Usage of evaluation model in Reactive programming]({{ "/assets/images/2018-02-04-Reactive_programming-deeper/evaluation_graph_usage.png" | absolute_url }})
+![Usage of evaluation model in Reactive programming]({{ site.url }}/assets/images/2018-02-04-Reactive_programming-deeper/evaluation_graph_usage.png)
 
 ### Implementation algorithms
 There exist many algorithms for implementing propagation of changes in evaluation model, but the most common are: pull, push or pull-push algorithm.
@@ -30,7 +30,7 @@ Evaluation model can be static or dynamic. That means, that model is created bef
 ### Simple example of evaluation in model
 On the image below, we can see a simple example of evaluation model, where are three variables two operators. Computation of this model is simple and straight forward.
 
-![Simple example of evalution of model]({{ "/assets/images/2018-02-04-Reactive_programming-deeper/evaluation_model.png" | absolute_url }})
+![Simple example of evalution of model]({{ site.url }}/assets/images/2018-02-04-Reactive_programming-deeper/evaluation_model.png)
 
 ## Implementation challenges
 Implementation of Reactive programming has some challenges, which must be resolved. The most common challenge is an evaluation model with cyclic dependencies. Also second challenge is avoiding time based leaks.

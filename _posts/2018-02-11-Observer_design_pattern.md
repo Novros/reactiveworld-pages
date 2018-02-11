@@ -10,14 +10,14 @@ When you need to automatically notify objects about change of one object, observ
 ## Description
 Observer design pattern defines one-to-many relation. That relation has the property, that when state changes on "one" object, it will notify "many" objects. To listen to this changes object must subscribe to object, also they can unsubscribe from the object. How observer pattern is constructed, is illustrated in the image below:
 
-![UML model of Observer design pattern]({{ "/assets/images/11-02-2018-Observer_design_pattern/observer.png" | absolute_url }})
+![UML model of Observer design pattern]({{ site.url }}/assets/images/2018-02-11-Observer_design_pattern/observer.png)
 
 - **Observable** - Its state is observed and notifies observers about a change of state.
 - **Observer** - Attaching to observe by method subscribe and is notified of method update, when a change of state of observable occurs.
 - **Update** - This method is called when observable changes state.
 - **Notify** - This method is called when state in observable is changed. In implementation, this method will iterate through all observers and call their method update.
 
-![Sequence of calling methods on Observer design pattern]({{ "/assets/images/11-02-2018-Observer_design_pattern/observer_seq.png" | absolute_url }})
+![Sequence of calling methods on Observer design pattern]({{ site.url }}/assets/images/2018-02-11-Observer_design_pattern/observer_seq.png)
 
 ## Responsibilities
 - Responsibility of **observable is maintained list of observers and notify them** about state of change.
