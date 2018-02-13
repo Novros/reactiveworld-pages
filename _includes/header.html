@@ -4,7 +4,7 @@
 		<ul class="right">
 			{% for page in site.pages %}
 				{% if page.title %}
-					{% unless page.title == 'Home' %}
+					{% unless page.title == 'Home' || unless page.title == 'Sitemap' %}
 						<li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
 					{% endunless %}
 				{% endif %}
