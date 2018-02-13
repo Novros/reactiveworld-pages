@@ -6,7 +6,7 @@ baseurl: "/"
 url: "https://reactiveworld.net"
 twitter_username: rosprog
 github_username:  novros
-email: rostislav.novak92@gmail.com
+email: novros@reactiveworld.net
 
 # Build settings
 markdown: kramdown
