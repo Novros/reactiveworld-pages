@@ -22,7 +22,7 @@ The state of this is specification is:
 More information about Reactive Streams on their [website](http://www.reactive-streams.org/)
 
 ## ReactiveX
-![ReactiveX logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/reactivex.png){:style="float: left; margin-right: 12px; margin-top: 7px": height="128"}
+![ReactiveX logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/reactivex.png){:style="float: left; margin-right: 12px; margin-top: 7px; height: 128px"}
 ReactiveX is the main library for those, who want to start with reactive programming. It has many implementations across many languages. And the most benefit is that, they are trying to keep same api in all languages. The definition of what ReactiveX is from their website:
 
 *"ReactiveX is a library for composing asynchronous and event-based programs by using observable sequences."*
@@ -30,7 +30,7 @@ ReactiveX is the main library for those, who want to start with reactive program
 Also, they have very good ipdocumentation and introduction to Reactive Programming on their [website](http://reactivex.io/intro.html).
 
 ## Vert.x
-![Vert.x logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/vert.x.png){:style="float: left;" :height="128"}
+![Vert.x logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/vert.x.png){:style="float: left;; height: 128px"}
 Small, fast, event driven and non blocking toolkit for building reactive systems. The toolkit can be used in multiple languages for example Java, Javascript, Ruby, Scala. It provides a couple components for reactive programming. Also, it supports Reactive Streams so it can interoperate with other reactive implementations. Vert. x provides its own mechanism for handling streams of data and pumping them with backpressure. And provides Rx-ified version of the api, so it can be easily used with ReactiveX together.
 
 Information about toolkitVert.x is [here](http://vertx.io/) and [part](http://vertx.io/docs/#reactive) about reactive support.
@@ -39,19 +39,19 @@ Information about toolkitVert.x is [here](http://vertx.io/) and [part](http://ve
 Small reactive programming library for Javascript. [Website](https://baconjs.github.io)
 
 ## Kefir.js
-![Kefir.js logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/kefir.js.png){:style="float: left; margin-right: 12px; margin-top: 7px" :height="64"}
+![Kefir.js logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/kefir.js.png){:style="float: left; margin-right: 12px; margin-top: 7px; height: 64px"}
 A reactive programming library for JavaScript, which is inspired by Bacon.js and ReactiveX with focus on low memory usage and high performance. The library supports streaming and properties, where streams are events made available over time and properties are value change over time.
 
 Website for library is [here](http://kefirjs.github.io/kefir/).
 
 ## Spring Reactive streams
-![Spring logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/spring.png){:style="float: left; margin-right: 12px; margin-top: 7px" :height="128"}
+![Spring logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/spring.png){:style="float: left; margin-right: 12px; margin-top: 7px; height: 128px"}
 Spring framework today also support reactive. It uses a project reactor to achieve this, also has another terminology for Reactive programming then ReactiveX, for example Flux is Observable and Mono is Single or Maybe. But Spring also fully supports use of RxJava. If you want to you use Spring reactive streams it is in spring-webflux module, which support reactive HTTP and WebSocket clients. Where request expose the body as Flux or Mono and the response expose as any Reactive Streams publisher as body
 
 Documentation for spring reactive atreams is [here](https://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/web-reactive.html)
 
 ## Project Reactor
-![Project reactor logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/reactor.png){:style="float: left; margin-right: 12px; margin-top: 7px" :height="128"}
+![Project reactor logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/reactor.png){:style="float: left; margin-right: 12px; margin-top: 7px; height: 128px"}
 *"Non-Blocking Reactive Foundation for the JVM"*
 
 Another library builds on the Reactive Streams specification and it is organized into multiple projects: reactor-core, spring and RxJava (ReactiveX). It is well suited for creating Microservices Architecture and also offers backpressure-ready network engines.
@@ -59,7 +59,7 @@ Another library builds on the Reactive Streams specification and it is organized
 More information is available on [website](https://projectreactor.io/).
 
 ## Akka streams
-![Akka logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/akka.png){:style="float: left; margin-right: 12px; margin-top: 7px" :height="128"}
+![Akka logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/akka.png){:style="float: left; margin-right: 12px; margin-top: 7px; height: 128px"}
 Akka is toolkit for building message-driven applications for Java and Scala. The main object in Akka is an Actor, which is something, what receives and sends messages. And  can be seen as something what is dealing with a stream of messages. So, the creators of Akka decided to create Akka Streams API with support of Reactive Streams, which Akka is also founding member. But one important thing, Akka Streams API is completely decoupled from the Reactive Streams interfaces, because Reactive Streams interfaces should not be geared towards ent-users as API. Also Akka Streams have own terminology on reactive programming, for example chain of reactive functions is called graphs.
 
 Documentation of Akka stream is [here](http://doc.akka.io/docs/akka/current/stream/stream-introduction.html) (introduction), their [stream design](http://doc.akka.io/docs/akka/current/general/stream/stream-design.html) and [some basic](http://doc.akka.io/docs/akka/current/stream/stream-flows-and-basics.html)
