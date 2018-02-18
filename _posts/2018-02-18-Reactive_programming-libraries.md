@@ -30,7 +30,7 @@ ReactiveX is the main library for those, who want to start with reactive program
 Also, they have very good ipdocumentation and introduction to Reactive Programming on their [website](http://reactivex.io/intro.html).
 
 ## Vert.x
-![Vert.x logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/vert.x.png){:style="float: left;; height: 128px"}
+![Vert.x logo]({{ site.url }}/assets/images/2018-02-18-Reactive_programming-libraries/vert.x.png){:style="float: left; margin-right: 12px; margin-top: 7px; height: 64px"}
 Small, fast, event driven and non blocking toolkit for building reactive systems. The toolkit can be used in multiple languages for example Java, Javascript, Ruby, Scala. It provides a couple components for reactive programming. Also, it supports Reactive Streams so it can interoperate with other reactive implementations. Vert. x provides its own mechanism for handling streams of data and pumping them with backpressure. And provides Rx-ified version of the api, so it can be easily used with ReactiveX together.
 
 Information about toolkitVert.x is [here](http://vertx.io/) and [part](http://vertx.io/docs/#reactive) about reactive support.
