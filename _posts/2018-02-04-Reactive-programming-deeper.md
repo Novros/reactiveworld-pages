@@ -3,7 +3,7 @@ layout: post
 title: Reactive programming - deeper
 date: 2018-02-04 23:30:00
 comments: true
-excerpt: In this post, we will look deeper into Reactive Programming. More precisely: What is the evaluation model of reactive programming. And on some challanges of implementation of Reactive programming.
+excerpt: In this post, we will look deeper into Reactive Programming. More precisely&#58 What is the evaluation model of reactive programming. And on some challanges of implementation of Reactive programming.
 ---
 In this post, we will look deeper into Reactive Programming. More precisely: What is the evaluation model of reactive programming. And on some challanges of implementation of Reactive programming.
 
