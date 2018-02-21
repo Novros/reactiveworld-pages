@@ -51,3 +51,4 @@ In this post we looked at some information and challenges of implementing Reacti
 ## Referencies
 - [Reactive programming on wikipedia](https://en.wikipedia.org/wiki/Reactive_programming)
 - Bainomugisha, E.; Carreton, A. L.; van Cutsem, T.; aj.: A Survey on Reactive Programming. ACM Comput. Surv. ISSN 0360-0300, doi:10.1145/2501654.2501666.
+
