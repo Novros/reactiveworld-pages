@@ -72,8 +72,8 @@ On completed.
 - Observable.fromArray(1,2,3) - Creates observable from given array.
 
 ``` java
-		final Observable<Integer> observable = Observable.fromArray(1, 2, 3);
-		observable.subscribe(new PrintObserver());
+final Observable<Integer> observable = Observable.fromArray(1, 2, 3);
+observable.subscribe(new PrintObserver());
 ``` 
 ```
 On subscribe.
@@ -100,7 +100,7 @@ disposable.dispose(); // Unsubscribing
 ### Hot and cold observable
 There are two types of Observables. One is called hot and second is called cold. Hot means that Observable will start emitting items as soon as it is created. So any observer which will subscribe after some time can start observing items somewhere in the middle. And cold is opposite of hot, that means that Observable will wait for first subscriber. So, with this type of Observable is guaranteed that we will see the whole sequence of items.
 
-#### Example of usages
+#### Example use case
 If you are thinking about use cases for hot and cold observable it can be found in GUI. For example: We want to react on button click, but we do not need to react on the whole sequence of events, but only when Observer will subscribe. So hot Observable is handy here. On the other hand, when the user types text into the text box, we need to observe all key events, before we subscribes to Observable. Cold observable will help us here.
 
 ### Operators
@@ -161,12 +161,10 @@ public class SingleObserver implements io.reactivex.SingleObserver<Object> {
 ```java
 final Single<Integer> single = Single.fromCallable(() -> 2);
 single.subscribe(new SingleObserver());
-
 ```
 ```
 On subscribe.
 On success: 2
-
 ```
 
 ## Subject
@@ -176,7 +174,8 @@ Subject acts as Observable and Observer. It is something like bridge between *n*
 When observer subscribes to BehaviourSubject, it will start emitting items by last emitted value or default value defined at creation of the subject. And then will continue to emit any other items by subscribed Observables or next method on the subject.
 
 ``` java
-final Subject<Integer> subject = BehaviorSubject.createDefault(0); // It can be create by create() method.
+// It can be create by also by create() method.
+final Subject<Integer> subject = BehaviorSubject.createDefault(0); 
 subject.subscribe(new PrintObserver());
 
 System.out.println("- calling on next");
