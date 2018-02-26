@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Stream types 
+title: Observable types 
 date: 2018-02-25 23:30:00
 comments: true
-excerpt: Streams (Observables) are the main part of Reactive programming. We will look at different types of streams, usages and also look at simple examples. A used reactive library for examples is ReactiveX.
+excerpt: Observables (streams) are the main part of Reactive programming. We will look at different types of streams, usages and also look at simple examples. A used reactive library for examples is ReactiveX.
 ---
-Streams (Observables) are the main part of Reactive programming. We will look at different types of streams, usages and also look at simple examples. A used reactive library for examples is ReactiveX.
+Observables (streams) are the main part of Reactive programming. We will look at different types of streams, usages and also look at simple examples. A used reactive library for examples is ReactiveX.
 
-## Consumer aka Observer
+## Observer
 Observer subscribes to observable and reacts to observable emitted objects. It is constructed from these four methods:
 
 - **onNext** - This method is called when Observable emits an item, where the parameter is emitted item. OnNext is main method when we are putting logic in reactive Programming.
@@ -49,6 +49,24 @@ public class PrintObserver implements Observer<Object> {
 }
 ```
 
+## Consumer
+The consumer is a specialized type of Observer, which have only one method accept, which is called as onNext or onError or onComplete method. On which call is called is defined by order in the subscribing method in Observable.
+
+### Example
+``` java
+package cz.novros.reactiveworld.observer;
+
+import io.reactivex.functions.Consumer;
+
+public class PrintConsumer implements Consumer<Object> {
+
+	@Override
+	public void accept(final Object o) throws Exception {
+		System.out.println("Accept: " + o);
+	}
+}
+```
+
 ## Observable
 The observable is one of the base type of streams in reactive programming. Observer subscribes to an observer and the observable emits item or sending notification about their state to the observer.
 
@@ -60,7 +78,6 @@ We can create Observable by many static methods of Observable. For example:
 ``` java
 final Observable<Integer> observable = Observable.just(10, 5);
 observable.subscribe(new PrintObserver());
-
 ```
 ```
 On subscribe.
@@ -83,10 +100,10 @@ On next: 3
 On completed.
 ```
 
-There are many and many methods and also transformation functions and so on. About creation of Observables and functions is another post.
+There are many and many methods and also transformation functions, filter functions and so on.
 
 ### Subscribe and unsubscribe
-If we want to subscribe to observable we only need to implement Observer interface described in the previous post.
+If we want to subscribe to observable we only need to implement Observer interface described in the previous chapter. Or subscribe with one (onNext) or two(onNext and onError) or three(onNext, onError and onComplete) consumers.
 
 In some implementations of Reactive programming you can also unsubscribe after subscribing to observable. For this function, they're specialized interface observable, which have unsubscribe method. The result of calling unsubscribe can cascade of calling unsubscribe on chain of operators, which were applied to Observable. So, it can take time to stop emitting items.
 
