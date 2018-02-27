@@ -171,7 +171,6 @@ public class SingleObserver implements io.reactivex.SingleObserver<Object> {
 		System.out.println("On error: " + throwable.getClass().getSimpleName() + ": " + throwable.getMessage());
 	}
 }
-
 ```
 
 ### Single example
@@ -263,7 +262,6 @@ System.out.println("- subscribing subject to observable");
 final Observable<Integer> observable = Observable.fromArray(8, 9);
 
 observable.subscribe(subject);
-
 ```
 ```
 On subscribe.
@@ -341,7 +339,6 @@ subject.subscribe(new PrintObserver());
 System.out.println("- subscribing subject to observable");
 final Observable<Integer> observable = Observable.fromArray(8, 9);
 observable.subscribe(subject);
-
 ```
 ```
 On subscribe.
@@ -353,7 +350,6 @@ On next: 9
 On completed.
 On next: 9
 On completed.
-
 ```
 
 ## Source code
