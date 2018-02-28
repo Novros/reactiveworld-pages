@@ -4,4 +4,8 @@ title: Contact
 permalink: /contact/
 ---
 
-You can contact me on e-mail [novros@reactiveworld.net](mailto:novros@reactiveworld.net).
+Contact and links:
+- **e-mail** - [novros@reactiveworld.net](mailto:novros@reactiveworld.net).
+- **github account** - https://github.com/Novros
+- **github repo** - https://github.com/Novros/reactiveworld-pages
+- **source code examples ** - https://github.com/Novros/reactiveworld-examples
