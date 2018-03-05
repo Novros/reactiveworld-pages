@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Observables creation functions
+title: Observables - creation functions
 date: 2018-03-04 23:30:00
 comments: true
 excerpt: In this post we will look at functions, which creates Observables from imperative style objects or create Observable with generating items itself.
@@ -61,7 +61,7 @@ Create observable from item or items and then the items will be emitted.
 
 *Method variantions*: just(arrg), just(arg, arg2), just(arg,arg2,arg3), ...
 
-### Examples
+#### Examples
 Just method for one argument:
 ``` java
 final Observable<Integer> observable = Observable.just(5);
@@ -131,7 +131,7 @@ observable.subscribe(new PrintObserver());
 On subscribe.
 ```
 
-### Throw
+### Error
 Creates Observable from exception which will be thrown after subscription.
 
 ``` java
@@ -143,7 +143,7 @@ On subscribe.
 On error: IllegalArgumentException: null
 ```
 
-## Repteat creation methods
+## Repeatable based methods
 The methods in this section create Observable with generated values from implementation of the method.
 
 ### Interval
@@ -153,10 +153,6 @@ Create Observable which will emit a sequence of numbers spaced with given interv
 
 ``` java
 Observable<Long> observable = Observable.interval(1, 1, TimeUnit.SECONDS);
-observable.subscribe(new PrintObserver());
-Thread.sleep(3000);
-
-observable = Observable.interval(0, 1, TimeUnit.SECONDS);
 observable.subscribe(new PrintObserver());
 Thread.sleep(3000);
 ```
@@ -184,7 +180,7 @@ On next: 3
 ### Repeat
 Repeatedly emits specified item.
 
-## Timer
+### Timer
 Emits one item (specified at calling method) after the specified span of the time.
 
 ``` java
@@ -199,9 +195,9 @@ On next: 0
 On completed.
 ```
 
-## Other creations methods
+## Other creation methods
 
-## Create
+### Create
 Create Observable from scratch by function or ObservableEmitter.
 
 ``` java
