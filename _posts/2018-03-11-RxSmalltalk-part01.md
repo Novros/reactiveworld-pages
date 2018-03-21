@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RxSmalltalk - implementing reactive library - part 1
+title: RxSmalltalk - implementation - part 1
 date: 2018-03-11 23:30:00
 comments: true
 excerpt: Let's try to implement reactive extension in Smalltalk. As inspiration, we will use ReactiveX. In this part of the series, we will implement basic reactive object called Observable with one creation method.
