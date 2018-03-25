@@ -3,21 +3,20 @@ layout: post
 title: RxSmalltalk - implementation - part 1
 date: 2018-03-11 23:30:00
 comments: true
-excerpt: Let's try to implement reactive extension in Smalltalk. As inspiration, we will use ReactiveX. In this part of the series, we will implement basic reactive object called Observable with one creation method.
+excerpt: Let's try to implement reactive extension in Smalltalk. For inspiration, we will use ReactiveX. In first part of this series, we will implement basic reactive object called Observable with one creation method.
 ---
 
-Let's try to implement reactive extension in Smalltalk. As inspiration, we will use ReactiveX. In this part of the series, we will implement basic reactive object called Observable with one creation method.
+Let's try to implement reactive extension in Smalltalk. For inspiration, we will use ReactiveX. In first part of this series, we will implement basic reactive object called Observable with one creation method.
 
 ## Observable
-Description of Observable is in this [post](https://www.reactiveworld.net/2018/02/25/Observable-types.html). In simple words, it is something what emits a sequence of values.
+Full description of Observable is in this [post](https://www.reactiveworld.net/2018/02/25/Observable-types.html). In simple words, it is something what emits a sequence of values.
 
 ### Basic creation methods
-We will start with implementing creation methods, because at the begin we need have the way to create observable. Basic creation methods are: *fromArray, just, range, empty, never*. From their description with example, see [this post](https://www.reactiveworld.net/2018/03/04/Observable-creation.html) about static functions.
+We will start with implementing creation methods, because at the begin we need have the way to create observable. Basic creation methods are: *fromArray, just, range, empty, never*. For their description with examples, see [this post](https://www.reactiveworld.net/2018/03/04/Observable-creation.html) about creation functions of Observables.
 
-## Tests
-At the begging we need some tests as use cases for Observable. So, positive test for array creation method:
+## Test method
+At the begging we need test method as use cases for creating Observable. So, positive test for array creation method is:
 
-### Array
 ``` smalltalk
 testArray
         "Test method to create observable from array."
@@ -35,10 +34,10 @@ testArray
 ```
 
 ### TestObserver
-We need a class which will observe our Observable and saves emitted items to assert later. The observer must implement three basic methods: ```onNext: item```, ```onComplete``` and ```onError: error```.
+TestObserver is class, which will observe our Observable and saves emitted items, which cane asserted later. From definition of Observer in reactive programming, observer must implement three basic methods: ```onNext: item```, ```onComplete``` and ```onError: error```.
 
 #### Class definition
-We will be storing emitted items into collection and complete and error will be boolean flag. So, the definition of class will be:
+Emitted items We will be storing in collection and complete and error will be boolean flag. So, the definition of class is:
 
 ``` smalltalk
 Object subclass: #TestObserver
@@ -48,7 +47,7 @@ Object subclass: #TestObserver
 ```
 
 #### Methods implementation
-Implementing Observer methods are straightforward. Set a boolean flag if completed or error, add items into collection in the onNext method. Of course getters should be also, but they are not shown.
+Implementing Observer methods are straightforward. Set a boolean flag if completed or error, add items into collection in the onNext method. Of course getters should be mplemented also, but they are not shown.
 
 ``` smalltalk
 initialize
@@ -69,10 +68,10 @@ onError: exception
 ```
 
 ## Naive implementation
-Now, when we have a simple test with TestObserver, we can start implementing Observable. So, lets start with some naive implementation based on [Observer](https://www.reactiveworld.net/2018/02/11/Observer-design-pattern.html) design pattern.
+Now, we have implemented a simple test with TestObserver, so as next step, we can start implementing Observable. In the begging, let's start with some naive implementation based on [Observer](https://www.reactiveworld.net/2018/02/11/Observer-design-pattern.html) design pattern.
 
 ### Class definition
-We need only attribute when all data be stored, because subscribe method can be called many times.
+We will need only one attribute, in which will be all data stored. That is mandatory to emit items multiple times, because subscribe method can be called many times.
 
 ``` smalltalk
 Object subclass: #Observable
@@ -83,7 +82,7 @@ Object subclass: #Observable
 ```
 
 ### Class methods
-Our main method for creating Observable with array stored in data attribute as collection.
+Our main method for creating Observable with array as argument, stores array to data attribute as a collection.
 
 ``` smalltalk
 "Class method"
@@ -97,7 +96,7 @@ array: array
 ```
 
 ### Instance methods
-Now, we need to implement methods to notify observer about a change of out observable state. Again implementation is straightforward.
+Now, we need to implement methods to notify observer about a change of our observable state. Again, implementation is straightforward.
 
 ``` smalltalk
 notify: item to: observer
@@ -115,7 +114,7 @@ notifyError: error to: observer
 	observer onError: error
 ```
 
-And last method which we need to implement is subscribing observer to observable.
+And as last method, which we need to implement is subscribing Observer to Observable.
 
 ``` smalltalk
 subscribe: observer
@@ -124,18 +123,18 @@ subscribe: observer
 	self notifyCompleteTo: observer.
 ```
 
-Now run the test... green. Nice, it works. But if we think about implementing some additional features (reactive functions, other Observable types) and when we look at the definition of Observer in Reactive Programming and also on ReactiveX implementation, we see that Reactive programming uses extended Observer design pattern with subscription (we can unsubscribe). And also implementing of a new type of Observable must cost only implementing one or two classes.
+Now run the test ... green. Nice, it works. But if we think about implementing some additional features of reactive programming (reactive functions, other Observable types) and when we look at the definition of Observer in Reactive Programming and also on ReactiveX implementation of Observable, we see that Reactive programming uses extended Observer design pattern with subscription (we can unsubscribe) desing pattern. And also implementing of a new type of Observable must costs only implementing one or two classes.
 
-Our actual state of codes can be found on repository under [commit](https://github.com/Novros/RxSmalltalk/tree/4b07cc973037cd0218e7b140e58661596c80f3f1).
+Our actual state of codes can be found in repository of RxSmalltalk under this [commit](https://github.com/Novros/RxSmalltalk/tree/4b07cc973037cd0218e7b140e58661596c80f3f1).
 
 ## Robust implementation
-We need more robust implementation, which will in more in OOP style and give us flexible hierarchy to simply create next Observable. The hierarchy will be:
+After implementing naive solution, we discovered that we need more robust implementation, which will be more in OOP style and give us flexible hierarchy to simply create new type of Observable. So, the hierarchy of classes shoudl be:
 
-1. Class Observable will be an abstract class for all Observables. With "abstract" method  subscribe, which will return the subscription class.
-2. Class Subscription class will holds data and will know how to emit them to Observers.
-3. Creating class ArrayObservable which will be creating and return ArraySubscription in subscribe: observer method.
-4. Class ArraySubscription will hold data as a collection will know how to iterate the collection and how to emit data in it.
-5. Class Observer will be abstract class and have a default implementation of common methods.
+1. Class Observable will be an abstract class for all Observables. With "abstract" method  subscribe, which will return the subscription.
+2. Class Subscription will holds data and will know how to emit each item of data to Observers.
+3. Creating class ArrayObservable, will create and return ArraySubscription in subscribe observer method.
+4. Class ArraySubscription will holds data as a collection and will know how to iterate the collection of data and how to emit data.
+5. Class Observer will be abstract class and have a default implementation of common methods of Observer.
 
 Sequence of calling methods will be:
 1. Observer.fromArray: array -> ArrayObservable
@@ -144,7 +143,7 @@ Sequence of calling methods will be:
 4. Observer.onSubscribe -> Subscription.request: n.
 
 ### Observable
-Observable must be changed to more abstract type. It will be our facade over Observable child classes to hide implementation hierarchy. So, it will only create instances of child classes of Observables through class methods (Observable creation methods). Implementation of this is simple, removing all previous code from Observable and implement only one method, which will create our ArrayObservable with given array.
+Observable must be changed to more abstract type. It will be our facade over Observable child classes to hide implementation hierarchy. So, it will only create instances of child classes of Observables through class methods (Observable creation methods). Implementation of this is simple, removing all previous code from Observable and implement only one method, which will create our ArrayObservable with passed array as arguments.
 
 #### Class definition
 ``` smalltalk
@@ -163,7 +162,7 @@ array: array
 ```
 
 ### ArrayObservable
-And now we will need to implement a subclass of Observable for arrays. It will be called ArrayObservable and it will be creating ArraySubscription for Observers. So, we need to store array in some instance attribute in the constructor and implement subscribe method, which will return ArraySubscription with stored array.
+After that we need to implement a subclass of Observable for arrays. It will be called ArrayObservable and it will be creating ArraySubscription for Observers. So, we need to store array into some instance attribute in the constructor and implement subscribe method, which will return ArraySubscription with stored array.
 
 #### Class definition
 ``` smalltalk
@@ -194,7 +193,7 @@ subscribe: observer
 ```
 
 ### Subscription
-Subscription is bridge between Observable and Observer, which is created by Observable and used by the Observer. So, it must hold the data (which will be emitted), observer (which is owner of subscription) and also it must provide the option to be cancelled during emitting.
+Subscription is bridge between Observable and Observer, which is created by Observable and used by the Observer. So, it must hold the data (which will be emitted), observer reference (which is owner of subscription) and also it must provide the option to be cancelled during emitting.
 
 #### Class definition
 We will define abstract class for all subscriptions, which will implement common (simple) methods and child classes will now what is stored in data and how it must be emitted.
@@ -238,7 +237,7 @@ Subscription subclass: #ArraySubscription
 ```
 
 #### Constructor
-The constructor will create instance with data and prepare everything for emitting data. Data will be emitted when Observer will request it.
+The constructor will only create instance with data and prepare everything for emitting data. Data will be emitted when Observer will request it.
 
 ``` smalltalk
 newObserver: aObserver data: aData
@@ -260,7 +259,7 @@ initialize
 #### Request method
 The main part of all Subscriptions is method ```request: count```, which will emit *count* items to the observer.
 
-Method request should emit *count* items by calling ```onNext: item``` of Observer, only if the subscription is not completed or cancelled and catch any exception during emitting and emit to observer to ```onError: error``` method. Implementation of the method is below:
+Method request should emit *count* items by calling ```onNext: item``` of Observer, only if the subscription is not completed or cancelled and catch any exception during emitting and emit erro to observer throught ```onError: error``` method. Implementation of the method is below:
 
 ``` smalltalk
 request: count
@@ -305,7 +304,7 @@ requestItem: index
 ```
 
 ### Observer
-And as last class we need to implement a common class for Observers. It will holds achieved subscription, provided default implementation of ```cancel``` and ```onSubscription: subscription``` method. Other methods like ```onNext: item```, ```onError: error``` and ```onComplete``` should be implemented by subclass.
+And as last class, which we need to implement is a common class for Observers. It will holds achieved subscription, provides default implementation of ```cancel``` and ```onSubscription: subscription``` method. And other methods like ```onNext: item```, ```onError: error``` and ```onComplete``` should be implemented by subclass.
 
 #### Class definition
 ``` smalltalk
@@ -338,6 +337,6 @@ request: count
 ```
 
 ## Conclusion
-As you can see by running test, we have implemented working Observable for arrays, which will be the base for another Observables (from range, never, empty and so on). This robust implementation gives us a more flexible implementation and nice OOP hierarchy. In the next part, we will implement another basic Observables of Reactive programming.
+As you can see by running test, we have implemented working creation method of Observable for arrays, which will be also the base for another Observable types(from range, never, empty and so on). This robust implementation gives us a more flexible implementation and nice OOP hierarchy. In the next part, we will implement another basic Observables of Reactive programming.
 
 Actual state of RxSmalltalk can be found in [RxSmalltalk repository](https://github.com/Novros/RxSmalltalk).`
