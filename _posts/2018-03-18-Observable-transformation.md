@@ -6,13 +6,13 @@ comments: true
 excerpt: Transformation functions change emitted items of Observable into another type, which is emitted.
 ---
 
-Transformation functions change emitted items of Observable into another type, which is emitted. In other words, transformation creates Observable wrapper around Observable. The wrapper is subscribed to that observable to catch all emitted items, and then the wrapper transform items into specified object and emit them to wrapper subscribers.
+Transformation functions change emitted items of Observable into another type, which is then emitted. In other words, transformation creates Observable wrapper around Observable. The wrapper is subscribed to that Observable to catch all emitted items, and then the wrapper transform items into specified object and emit them to wrapper subscribers.
 
 ## Grouping functions
-Functions in this section are grouping emitted items and then they will emit them as one item.
+Functions in this section are grouping emitted items and then they are emitted as one item.
 
 ### Buffer
-Buffer function will gather *n* items, group them and then emit group instead of emitting each item. When an error occurs during function, it will immediately stop function and emit error. Emitted group is usually an array or a collection of items.
+Buffer function will gather *n* items, group them and then emit group instead of emitting each item. When an error occurs during grouping, it will immediately stops grouping and emit an error. Emitted group is usually an array or a collection of items.
 
 #### Example
 ``` java
@@ -28,7 +28,7 @@ On completed.
 ```
 
 ### Window
-Window function is similar to buffer function, but instead of emitting groupie items, it will emit new Observable and emit *n* items into that observable and then emit a complete event. When an error occurs during emitting, it will be propagated to emitted Observable and stops observable to emit another items.
+Window function is similar to buffer function, but instead of emitting group of items, it will emit new Observable with *n* items and then that Observable will emit items and complete event. When an error occurs during emitting, it will be propagated to emitted Observable and stops source observable (window Observable) to emit nexts items.
 
 #### Example
 ``` java
@@ -54,7 +54,7 @@ On completed.
 ```
 
 ### GroupBy
-This function will group items into groups by key returned from discriminating function. For each group defined by the same key, it will emit new Observable. Emitted observable ends, when the source Observable ends.
+This function will group items into groups defined by key returned from discriminating function. For each group defined by the same key, it will emit new Observable. Emitted observable ends, when the source Observable ends.
 
 #### Example
 ``` java
@@ -89,7 +89,7 @@ Accepting group: 2
 ```
 
 ## Mapping functions
-Mapping functions transform emitted item into another item, which is emitted.
+Mapping functions transform emitted item into another item, which is then emitted.
 
 ### Map
 This function map emitted item into another item, by applying function, where argument is emitted item and returned value is an item, which will be emitted.
@@ -112,7 +112,7 @@ On completed.
 ```
 
 ### FlatMap
-FlatMap is similar to map function, but as a result of applied function is here Observable, which is flattened and merged with other created Observable by applying the function. Order of emitted items can be interleaved, but there exist variations of flatMap, where the result is ordered by emitted items of source Observable.
+FlatMap is similar to map function, but as a result of applied function is here Observable, which is flattened and merged with other created Observable by applying the function. Order of emitted items can be interleaved, but there exist variations of flatMap, where the result is ordered by emit time of source Observable.
 
 #### Example
 ``` java
@@ -138,7 +138,7 @@ On completed.
 ```
 
 ### Scan
-Scan function is almost same as map function. The difference between them is that: scan function applies function sequentially and use a function with two parameters, when first is last returned value (on the first run is null or specified item) and second emitted value from Observable.
+Scan function is almost same as map function. The difference between them is that: scan function applies function sequentially and use a function with two parameters, when first parameter is last returned value (on the first run is null or specified item) and second parameter is emitted value from Observable.
 
 #### Example
 ``` java
