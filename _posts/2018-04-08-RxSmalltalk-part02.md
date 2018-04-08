@@ -14,7 +14,7 @@ Again we will start with implementing test, which are defined by definition of c
 
 When we start creating many tests for different types of Observables, Is good to create some method, which will test Observable in a positive way with an expected collection of values.
 
-```Smalltalk
+``` smalltalk
 assertObservable: observable contains: data
 	| testObserver | 
 
@@ -30,7 +30,7 @@ assertObservable: observable contains: data
 
 Now we can simply test Observable by calling:
 
-```Smalltalk
+``` smalltalk
 self assertObservable: observable contains: { item item2 }.
 ```
 
@@ -42,7 +42,7 @@ All tests which we will implement has the same form:
 ### Just
 Just method only creates Observable from *n* items.
 
-```Smalltalk
+``` smalltalk
 testJust
 	| observable item|
 	item := 1. 
@@ -55,7 +55,7 @@ testJust
 ### Range
 Creates Observable from interval defined by two numbers.
 
-```Smalltalk
+``` smalltalk
 testRange
 	| observable | 
 	observable := Observable range: 1 to: 5.
@@ -66,7 +66,7 @@ testRange
 ### Empty
 Creates Observable with zero data.
 
-```Smalltalk
+``` smalltalk
 testEmpty
 	| observable |
 	observable := Observable empty.
@@ -81,7 +81,7 @@ testEmpty
 ### Never
 Creates Observable, which will never stop emitting zero items.
 
-```Smalltalk
+``` smalltalk
 testNever
 	| observable |
 	observable := Observable never.
@@ -96,7 +96,7 @@ testNever
 ### Raise
 Creates Observable which only emits exception.
 
-```Smalltalk
+``` smalltalk
 testRaise
 	| observable exception | 
 
@@ -122,7 +122,7 @@ Adding another type of Observable is simple. It can described with these steps:
 ### Range
 We will begin with the simpliest method. Range method is nothing else than *fromArray* with another arguments.
 
-```Smalltalk
+``` smalltalk
 range: from to: to
 	^self array:(from to: to).
 ```
@@ -131,20 +131,20 @@ range: from to: to
 Creation method *just* creates Observable from given items. We will implement only creation from one item.
 
 #### Creation method
-```Smalltalk
+``` smalltalk
 just: item
 	^ JustObservable newItem: item.
 ```
 
 #### Observable subclass
-```Smalltalk
+``` smalltalk
 Observable subclass: #JustObservable
 	instanceVariableNames: 'item'
 	classVariableNames: ''
 	package: 'Rx'
 ```
 
-```Smalltalk
+``` smalltalk
 subscribe: observer
 	observer onSubscribe: (JustSubscription newObserver: observer item: item)
 ```
@@ -152,14 +152,14 @@ subscribe: observer
 #### Subscription subclass
 Subscription only holds item as data and then it will emit it in request method for any count.
 
-```Smalltalk
+``` smalltalk
 Subscription subclass: #JustSubscription
 	instanceVariableNames: ''
 	classVariableNames: ''
 	package: 'Rx'
 ```
 
-```Smalltalk
+``` smalltalk
 newObserver: aObserver item: aItem
 	|subscription|
 	subscription := self new.
@@ -169,7 +169,7 @@ newObserver: aObserver item: aItem
 	^subscription .
 ```
 
-```Smalltalk
+``` smalltalk
 request: count
 	((count > 0 and: completed not) and: cancelled not)
 		ifTrue: [ observer onNext: data.
@@ -180,20 +180,20 @@ request: count
 Empty Observable will emit no items and only emit complete after subscription.
 
 #### Creation method
-```Smalltalk
+``` smalltalk
 empty
 	^ EmptyObservable new.
 ```
 
 #### Observable subclass
-```Smalltalk
+``` smalltalk
 Observable subclass: #EmptyObservable
 	instanceVariableNames: ''
 	classVariableNames: ''
 	package: 'Rx'
 ```
 
-```Smalltalk
+``` smalltalk
 subscribe: observer
 	observer onSubscribe: (EmptySubscription newObserver: observer)
 ```
@@ -201,7 +201,7 @@ subscribe: observer
 #### Subscription subclass
 Implementing of empty subscription is straightforward, call ```observer.onComplete``` when is observer call request.
 
-```Smalltalk
+``` smalltalk
 newObserver: aObserver
 	|subscription|
 	subscription := self new.
@@ -210,7 +210,7 @@ newObserver: aObserver
 	^subscription .
 ```
 
-```Smalltalk
+``` smalltalk
 request: count
 	"Request count items from publisher, but emit zero items."
 
@@ -222,20 +222,20 @@ request: count
 Never Observable will emit no item or onComplete or onError ever.
 
 #### Creation method
-```Smalltalk
+``` smalltalk
 never
 	^ NeverObservable new.
 ```
 
 #### Observable subclass
-```Smalltalk
+``` smalltalk
 Observable subclass: #NeverObservable
 	instanceVariableNames: ''
 	classVariableNames: ''
 	package: 'Rx'
 ```
 
-```Smalltalk
+``` smalltalk
 subscribe: observer
 	observer onSubscribe: (NeverSubscription newObserver: observer)
 ```
@@ -243,14 +243,14 @@ subscribe: observer
 #### Subscription subclass
 Never subscription will do nothing in method ```request```, so we do not need to override it.
 
-```Smalltalk
+``` smalltalk
 Subscription subclass: #NeverSubscription
 	instanceVariableNames: ''
 	classVariableNames: ''
 	package: 'Rx'
 ```
 
-```Smalltalk
+``` smalltalk
 newObserver: aObserver
 	"Creates never subscription."
 	
@@ -266,27 +266,27 @@ newObserver: aObserver
 Raise Observable will holds error and emit it when observer subscribe to it.
 
 #### Creation method
-```Smalltalk
+``` smalltalk
 raise: error
 	^ RaiseObservable newError: error
 ```
 
 #### Observable subclass
-```Smalltalk
+``` smalltalk
 Observable subclass: #RaiseObservable
 	instanceVariableNames: 'error'
 	classVariableNames: ''
 	package: 'Rx'
 ```
 
-```Smalltalk
+``` smalltalk
 subscribe: observer
 	observer onSubscribe: (RaiseSubscription newObserver: observer error: error)
 ```
 
 #### Subscription subclass
 Implementation is again simple, call only ```observer.onError``` with saved error.
-```Smalltalk
+``` smalltalk
 newObserver: aObserver error: error
 	|subscription|
 	subscription := self new.
@@ -296,7 +296,7 @@ newObserver: aObserver error: error
 	^subscription .
 ```
 
-```Smalltalk
+``` smalltalk
 accessing
 request: count
 	cancelled not
