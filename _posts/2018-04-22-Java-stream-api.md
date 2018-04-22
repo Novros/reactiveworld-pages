@@ -11,10 +11,10 @@ In Java 8 were introduced stream api, which is similar to Reactive Programming s
 As we know Observable stream is a sequence of objects with complete and error event. In Java stream API, stream same as Observable, but without events. It also supports some aggregate and filtering operations, too. Source for creating streams are collections, arrays or I/O resources, where stream does the iterations internally over the source's elements.
 
 ### Differences against collections
-- has no storage - stream is not data structure, it iterates over source elements
-- is functional in a nature - stream never ever modify the source
-- is lazy - many of stream operations are implemented lazily
-- unbounded - has no finite size
+- **has no storage** - stream is not data structure, it iterates over source elements
+- **is functional in a nature** - stream never ever modify the source
+- **is lazy** - many of stream operations are implemented lazily
+- **unbounded** - has no finite size
 
 ### Creation of streams
 Java API Stream can be created:
