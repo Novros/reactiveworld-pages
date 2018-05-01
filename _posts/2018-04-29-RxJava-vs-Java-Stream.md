@@ -57,7 +57,7 @@ Contained interfaces are in package java.util.concurrent.Flow:
 ## Differences
 In this section we will look at the main differences between RxJava and Java stream API.
 
-| Java Api Stream | RxJava |
+| Java Stream API | RxJava |
 | -------- | ------------- |
 | pull-based (terminal operator) | push-based (when you are subscribed) |
 | can be used only once (one subscriber) | can be used many times (many subscribers) |
