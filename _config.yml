@@ -10,8 +10,8 @@ email: novros@reactiveworld.net
 
 # Plugins
 plugins: 
-	- jekyll-paginate
-	- jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-sitemap
 
 # Paginator
 paginate: 5
