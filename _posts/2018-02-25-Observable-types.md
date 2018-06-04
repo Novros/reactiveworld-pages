@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Observable types 
+title: Observable - types 
 date: 2018-02-25 23:30:00
 comments: true
 excerpt: Observables (streams) are the main part of Reactive programming. We will look at different types of streams, usages and also look at simple examples. A used reactive library for examples is ReactiveX.

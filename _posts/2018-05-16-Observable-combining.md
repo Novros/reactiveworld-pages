@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Observable - Combining
+title: Observable - Combining functions
 date: 2018-05-16 23:30:00
 comments: true
 excerpt: Combining operators combine two Observables together by creating new Observable with items from source Observables.
