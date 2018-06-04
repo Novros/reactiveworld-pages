@@ -3,15 +3,15 @@ layout: post
 title: Observable - Error and utility functions
 date: 2018-06-03 23:30:00
 comments: true
-excerpt: Sometimes you do not want to call onError method of Observable. Or you want to react only on some specific event of the lifecycle of Observable. So we will look on at both of these things in this post.
+excerpt: Sometimes you do not want to onError method of Observer be called. Or you want to react only on some specific event of the lifecycle of Observable. Functions for both of these things are in this post.
 ---
-Sometimes you do not want to call onError method of Observable. Or you want to react only on some specific event of the lifecycle of Observable. So we will look on at both of these things in this post.
+Sometimes you do not want to onError method of Observer be called. Or you want to react only on some specific event of the lifecycle of Observable. Functions for both of these things are in this post.
 
 ## Error functions
 Functions in this section operate with errors, which can occures during emitting items.
 
 ### Catch
-Catch error emitted by Observable and continues with specified item, items or also by allowing Observable to continue.
+Catch error emitted by Observable and continues with specified item, items or allowing Observable to continue.
 
 *Method variants: onErrorResumeNext(Function), onErrorResume(ObservableSource), onErrorReturn(Function), onErrorReturnItem(T)*
 
@@ -33,7 +33,7 @@ On completed.
 ```
 
 #### Return Observable in case of error
-In this example new Observable is returned. But if you change returning of new Observable to returning our main Subject, you will get Subject, which will continue after error.
+In this example new Observable is returned in case of error. But if you change returning of new Observable to returning our main Subject, you will get Subject, which will continue after error.
 
 ```java
 observable = PublishSubject.create();
@@ -100,7 +100,7 @@ On error: IllegalArgumentException: null
 ```
 
 ## Utility functions
-In this section we will look at some functions, which do different things.
+In this section we will look at some functions, which do some useful things.
 
 ### Delay
 It will shift forward begin of source Observable by specified time.
@@ -176,7 +176,7 @@ After next: 3
 ```
 
 ### Materialize/Dematerialize
-Reverse Observable emitting by dividing of emitted events to groups. (Item, error event, complete event)
+Reverse Observable emition by dividing of emitted events to groups. (Item, error event, complete event)
 
 #### Materialize
 
@@ -212,7 +212,7 @@ observable.materialize().dematerialize().subscribe(new PrintObserver("Materializ
 ```
 
 ## Subscribe functions
-In this section we will look at some basic functions for the subscription Observer to Observable.
+In this section we will look at some basic functions for the subscription of Observer to Observable.
 
 ### Subscribe
 Main operator which connects Observable with Observer.
@@ -269,7 +269,7 @@ On next: Timed[time=25, unit=MILLISECONDS, value=4]
 ```
 
 ### Timeout
-Wraps Observable with timeout ability. That means, if no value after defining time will not be emitted from a source Observable, then error will be emitted.
+Wraps Observable with timeout ability. That means, if no value after defined time will not be emitted from a source Observable, then error will be emitted.
 
 *Method variants: timeout(long, TimeUnit), timeout(long, TimeUnit, ObservableSource),  timeout(long, TimeUnit, Scheduler),  timeout(long, TimeUnit, Scheduler, ObservableSource), ...
 *
