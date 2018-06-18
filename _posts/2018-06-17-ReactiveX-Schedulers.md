@@ -56,6 +56,7 @@ In this section we will look at the types of schedulers which are implemented in
 There exists many types of Schedulers and it can be hard to know which Scheduler to use and when. So I will give you my own recommendations with two views on this problem. One table is based on time of operation And second view Is based on layers of application of which is an operation called.
 
 ### When to use which Scheduler
+
 | Operation | Scheduler |
 | -------- | ------------- |
 | Constant time | single |
@@ -66,6 +67,7 @@ There exists many types of Schedulers and it can be hard to know which Scheduler
 | Tests | TestScheduler |
 
 ### Where to use which Scheduler
+
 | Layer | Scheduler | Reason |
 | --------- | ---------------- | ------------ |
 | Presentation layer | observe on currentThread/single| allows to update ViewModels |
